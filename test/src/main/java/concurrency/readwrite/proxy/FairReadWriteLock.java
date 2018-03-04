@@ -4,17 +4,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 //Fair implementation of read write lock
-public class MyReadWriteLock {
+public class FairReadWriteLock implements IReadWriteLock {
 
 	public AtomicBoolean write;
 	public AtomicInteger reads;
 	
-	public MyReadWriteLock() {
+	public FairReadWriteLock() {
 		write = new AtomicBoolean(false);
 		reads = new AtomicInteger(0);
 	}
 	
-	public int applyReadLock() throws InterruptedException {
+	@Override
+	public int addReadLock() throws InterruptedException {
 		int read = 0;
 		synchronized(write) {
 			while(!write.compareAndSet(false, false)) {	//do not allow new readers until writer completes. (writer only completes after existing readers have completed! circle of life!!)
@@ -33,7 +34,8 @@ public class MyReadWriteLock {
 		}
 		return read;
 	}
-
+	
+	@Override
 	public int releaseReadLock() {
 		int read = 0;
 		synchronized(reads) {
@@ -43,7 +45,8 @@ public class MyReadWriteLock {
 		return read;
 	}
 
-	public void applyWriteLock() throws InterruptedException {
+	@Override
+	public void addWriteLock() throws InterruptedException {
 		synchronized(write) {
 			while(!write.compareAndSet(false, true)) {
 				System.out.println(String.format("Thread=%s is waiting for write operation completes!", Thread.currentThread().getName()));
@@ -60,6 +63,7 @@ public class MyReadWriteLock {
 		}
 	}
 	
+	@Override
 	public void releaseWriteLock() throws InterruptedException {
 		synchronized(write) {
 			while(!write.compareAndSet(true, false)) {

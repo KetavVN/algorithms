@@ -14,7 +14,7 @@ import org.aspectj.lang.annotation.Pointcut;
 public class ReadWriteLockProxy {
 
 	//Keys are weak
-	private Map<Object, MyReadWriteLock> lockMap = new WeakHashMap<>();
+	private Map<Object, IReadWriteLock> lockMap = new WeakHashMap<>();
 	
 	@Pointcut("execution(public String concurrency.readwrite.proxy.SampleData.get(..))")
 	public void readPointcut() {}
@@ -27,13 +27,13 @@ public class ReadWriteLockProxy {
 		Object ret = null;
 		try {
 			Object target = pjp.getTarget();
-			MyReadWriteLock lock = null;
+			IReadWriteLock lock = null;
 			if(!lockMap.containsKey(target)) {
-				lock = new MyReadWriteLock();
+				lock = new FairReadWriteLock();
 				lockMap.put(target, lock);
 			}
 			lock = lockMap.get(target);
-			lock.applyReadLock();
+			lock.addReadLock();
 			ret = pjp.proceed();
 			lock.releaseReadLock();
 		} catch (Throwable e) {
@@ -47,13 +47,13 @@ public class ReadWriteLockProxy {
 		Object ret = null;
 		try {
 			Object target = pjp.getTarget();
-			MyReadWriteLock lock = null;
+			IReadWriteLock lock = null;
 			if(!lockMap.containsKey(target)) {
-				lock = new MyReadWriteLock();
+				lock = new FairReadWriteLock();
 				lockMap.put(target, lock);
 			}
 			lock = lockMap.get(target);
-			lock.applyWriteLock();
+			lock.addWriteLock();
 			ret = pjp.proceed();
 			lock.releaseWriteLock();
 		} catch (Throwable e) {

@@ -1,4 +1,4 @@
-package concurrency.readwrite;
+package concurrency.readwrite.dataholder;
 
 import java.security.SecureRandom;
 
