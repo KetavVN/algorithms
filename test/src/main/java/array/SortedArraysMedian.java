@@ -32,21 +32,21 @@ public class SortedArraysMedian {
 			k++;
 		}
 
-		while(k<=end && i<nums1.length) {
-			if(k>=start)
-				sum+=nums1[i];
-			i++;
-			k++;
-		}
-
-		while(k<=end && j<nums2.length) {
-			if(k>=start)
-				sum+=nums2[j];
-			j++;
-			k++;
-		}
+		sum+=traverse(nums1, i, k, start, end);
+		sum+=traverse(nums2, j, k, start, end);
 
 		return sum/divisor;
+	}
+	
+	private double traverse(int [] arr, int index, int k, int start, int end) {
+		double sum = 0;
+		while(k<=end && index<arr.length) {
+			if(k>=start)
+				sum+=arr[index];
+			index++;
+			k++;
+		}
+		return sum;
 	}
 
 	public static void main(String ...args) {
