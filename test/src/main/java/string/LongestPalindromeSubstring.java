@@ -1,5 +1,8 @@
 package string;
 
+import java.util.HashSet;
+import java.util.Set;
+
 //https://leetcode.com/problems/longest-palindromic-substring/description/
 public class LongestPalindromeSubstring {
 
@@ -104,7 +107,7 @@ public class LongestPalindromeSubstring {
 		expected.add("bb");
 		if(!expected.contains(ret)) {
 			System.out.println(String.format("FAIL: actual=%s expected=%s", ret, expected));
-			false=false;
+			flag=false;
 		}
 	
 		if(flag) {
