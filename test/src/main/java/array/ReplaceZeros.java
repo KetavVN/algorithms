@@ -1,3 +1,5 @@
+package array;
+
 //https://leetcode.com/problems/move-zeroes/
 public class ReplaceZeros {
 

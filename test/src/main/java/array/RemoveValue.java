@@ -1,3 +1,5 @@
+package array;
+
 //https://leetcode.com/problems/remove-element/submissions/
 public class Solution {
 
