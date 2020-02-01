@@ -29,27 +29,21 @@ public class SortedListMedian {
 		
 		int ai=0, bi=0, cnt=0;
 		double sum = 0;
-		int divisor = 0;
+		int divisor = len % 2 == 1 ? 1 : 2;
 		
 		//System.out.println(String.format("len=%d start=%d end=%d", len, start, end));
 		
 		//skip though unwanted part from both arrays
-		for(; cnt<start && ai<a.length && bi<b.length; cnt++) {
-			if(a[ai] < b[bi])
-				ai++;
-			else
-				bi++;
-		}
+		for(; cnt<start && ai<a.length && bi<b.length; cnt++)
+			if(a[ai] < b[bi]) ai++;
+			else bi++;
 		
 		//skip from b further
 		if(cnt<start && ai==a.length) {
 			bi += (start-cnt);
-			
-			//cnt = start;
 			while(start <= end) {
 				sum += b[bi++];
 				start++;
-				divisor++;
 			}
 			return sum/divisor;
 		}
@@ -57,27 +51,21 @@ public class SortedListMedian {
 		//skip from a further
 		if(cnt<start && bi==b.length) {
 			ai += (start-cnt);
-			
-			//cnt = start;
 			while(start <= end) {
 				sum += a[ai++];
 				start++;
-				divisor++;
 			}
 			return sum/divisor;
 		}
 		
-		for(; cnt<=end && ai<a.length && bi<b.length; cnt++, divisor++) {
-			if(a[ai] < b[bi])
-				sum += a[ai++];
-			else
-				sum += b[bi++];
-		}
+		for(; cnt<=end && ai<a.length && bi<b.length; cnt++)
+			if(a[ai] < b[bi]) sum += a[ai++];
+			else sum += b[bi++];
 		
-		for(; cnt<=end && ai<a.length; cnt++, divisor++)
+		for(; cnt<=end && ai<a.length; cnt++)
 			sum += a[ai++];
 		
-		for(; cnt<=end && bi<b.length; cnt++, divisor++)
+		for(; cnt<=end && bi<b.length; cnt++)
 			sum += b[bi++];
 		
 		return sum / divisor;
