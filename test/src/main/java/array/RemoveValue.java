@@ -1,7 +1,7 @@
 package array;
 
 //https://leetcode.com/problems/remove-element/submissions/
-public class Solution {
+public class RemoveValue {
 
     //Runtime: 0 ms, faster than 100.00% of Java online submissions for Remove Element.
     //Memory Usage: 36.3 MB, less than 100.00% of Java online submissions for Remove Element.
