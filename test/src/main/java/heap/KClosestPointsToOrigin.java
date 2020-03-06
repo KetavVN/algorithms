@@ -1,5 +1,7 @@
 package heap;
 
+import java.util.PriorityQueue;
+
 /**
   https://leetcode.com/problems/k-closest-points-to-origin/
   
