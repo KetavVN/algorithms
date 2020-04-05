@@ -34,30 +34,28 @@ Success Details
 Runtime: 0 ms, faster than 100.00% of Java online submissions for Linked List Cycle.
 Memory Usage: 39.8 MB, less than 5.71% of Java online submissions for Linked List Cycle.
 
-*/
+ */
 public class LinkedListCycle {
 
-  /**
-   * Definition for singly-linked list.
-   * class ListNode {
-   *     int val;
-   *     ListNode next;
-   *     ListNode(int x) {
-   *         val = x;
-   *         next = null;
-   *     }
-   * }
-   */
-  public boolean hasCycle(ListNode head) {
-        ListNode slow = head;
-        ListNode fast = slow!=null && slow.next!=null ? slow.next : null;
-        boolean hasLoop = false;
-        while(!hasLoop && fast!=null) {
-            hasLoop = slow == fast;
-            slow = slow.next != null ? slow.next : null;
-            fast = fast.next!=null && fast.next.next!=null ? fast.next.next : null;
-        }
-        return hasLoop;
-    }
+	class ListNode {
+		int val;
+		ListNode next;
+		ListNode(int x) {
+			val = x;
+			next = null;
+		}
+	}
+
+	public boolean hasCycle(ListNode head) {
+		ListNode slow = head;
+		ListNode fast = slow!=null && slow.next!=null ? slow.next : null;
+		boolean hasLoop = false;
+		while(!hasLoop && fast!=null) {
+			hasLoop = slow == fast;
+			slow = slow.next != null ? slow.next : null;
+			fast = fast.next!=null && fast.next.next!=null ? fast.next.next : null;
+		}
+		return hasLoop;
+	}
 
 }
