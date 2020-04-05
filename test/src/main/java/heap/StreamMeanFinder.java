@@ -1,5 +1,7 @@
 package heap;
 
+import java.util.PriorityQueue;
+
 /**
   https://leetcode.com/problems/find-median-from-data-stream/
   
@@ -38,7 +40,7 @@ public class StreamMeanFinder {
     PriorityQueue<Integer> higherMinQueue = null;
     
     /** initialize your data structure here. */
-    public MedianFinder() {
+    public StreamMeanFinder() {
         lowerMaxQueue = new PriorityQueue<>((x,y)->Integer.compare(y,x));
         higherMinQueue = new PriorityQueue<>();
     }
