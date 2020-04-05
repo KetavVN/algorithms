@@ -1,5 +1,8 @@
 package linklist;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /*
 https://leetcode.com/problems/linked-list-cycle-ii
 
@@ -32,7 +35,16 @@ Can you solve it without using extra space?
 
 */
 public class LinkedListCycle2 {
-
+	
+	class ListNode {
+		int val;
+		ListNode next;
+		ListNode(int x) {
+			val = x;
+			next = null;
+		}
+	}
+	
     /**
       Success Details
       Runtime: 4 ms, faster than 15.61% of Java online submissions for Linked List Cycle II.
