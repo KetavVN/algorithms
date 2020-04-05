@@ -48,7 +48,7 @@ public class MoveZerosToEnd {
         Runtime: 0 ms, faster than 100.00% of Java online submissions for Move Zeroes.
         Memory Usage: 39.9 MB, less than 6.29% of Java online submissions for Move Zeroes.
     */
-    public void moveZeroes(int[] nums) {
+    public void moveZeroes2(int[] nums) {
         
         if(nums == null || nums.length == 0) return;
         
