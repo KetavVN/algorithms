@@ -48,16 +48,16 @@ public class MeetingRooms2 {
 		//put it into queue by end time
 		PriorityQueue<Interval> queue = new PriorityQueue<>(endTimeCom);
 		
-		int maxRooms = 0;
+		int minRooms = 0;
 		
 		for(Interval interval : lst) {
 			while (!queue.isEmpty() && queue.peek().end < interval.start)
 				queue.poll();
 			queue.add(interval);
-			maxRooms = (queue.size()>maxRooms) ? queue.size() : maxRooms; 
+			minRooms = (queue.size()>minRooms) ? queue.size() : minRooms; 
 		}
 		
-		return maxRooms;
+		return minRooms;
 	}
 	
 	public static void main (String [] args) {
