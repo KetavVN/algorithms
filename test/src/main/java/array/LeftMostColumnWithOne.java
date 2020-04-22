@@ -1,5 +1,7 @@
 package array;
 
+import java.util.*;
+
 /*
 Leetcode day 20 - title: "Leftmost Column with at Least a One"
 
@@ -23,27 +25,26 @@ For custom testing purposes you're given the binary matrix mat as input in the f
 You will not have access the binary matrix directly.
 
 Example 1:
-
 Input: mat = [[0,0],[1,1]]
 Output: 0
 
 Example 2:
-
 Input: mat = [[0,0],[0,1]]
 Output: 1
 
 Example 3:
-
 Input: mat = [[0,0],[0,0]]
 Output: -1
 
 Example 4:
-
 Input: mat = [[0,0,0,1],[0,0,1,1],[0,1,1,1]]
 Output: 1
 
-Constraints:
+Example 5:
+Input: mat = [[1,1,1,1], [0,0,0,1], [0,0,1,1], [0,1,1,1]]
+Output: 0
 
+Constraints:
     m == mat.length
     n == mat[i].length
     1 <= m, n <= 100
