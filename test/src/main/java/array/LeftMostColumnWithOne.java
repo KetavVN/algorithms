@@ -1,6 +1,8 @@
 package array;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
 Leetcode day 20 - title: "Leftmost Column with at Least a One"
@@ -57,6 +59,24 @@ Success Details:
 */
 public class LeftMostColumnWithOne {
 
+	class BinaryMatrix {
+		
+		int table [][];
+		
+		public BinaryMatrix(int x, int y) {
+			table = new int[x][y];
+		}
+		
+		public List<Integer> dimensions() {
+			return Arrays.asList(table.length, table[0].length);
+		}
+		
+		public int get(int x, int y) {
+			return table[x][y];
+		}
+		
+	}
+	
 	public int leftMostColumnWithOne(BinaryMatrix mat) {
         List<Integer> dim = mat.dimensions();
         return getMinLeft(mat, dim, 0, dim.get(1)-1, -1);

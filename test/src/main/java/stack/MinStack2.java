@@ -1,5 +1,7 @@
 package stack;
 
+import java.util.Stack;
+
 /*
 https://leetcode.com/problems/min-stack/
 Leetcode day 10
@@ -35,7 +37,7 @@ public class MinStack2 {
     private Stack<Integer> minStack = null;
     
     /** initialize your data structure here. */
-    public MinStack() {
+    public MinStack2() {
         stack = new Stack<>();
         minStack = new Stack<>();
     }

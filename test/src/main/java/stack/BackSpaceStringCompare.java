@@ -1,5 +1,7 @@
 package stack;
 
+import java.util.Stack;
+
 /*
 https://leetcode.com/problems/backspace-string-compare/
 LeetCode day 9

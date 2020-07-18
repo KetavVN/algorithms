@@ -55,8 +55,8 @@ public class ValidParanthesisString {
                 return validateStr(s, ind+1, count);
             } else {
                 //3options
-                return = validateStr(s, ind+1, count+1)
-                        || validateStr(s, ind+1, count-1);
+                return validateStr(s, ind+1, count+1)
+                        || validateStr(s, ind+1, count-1)
                         || validateStr(s, ind+1, count);
             }
         }

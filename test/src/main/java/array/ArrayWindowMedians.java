@@ -46,7 +46,8 @@ import java.util.List;
 public class ArrayWindowMedians {
 
 	public double[] medianSlidingWindow(int[] nums, int k) {
-        //NavigableLinkedHashMap -- order and sorting both are required
+		
+		//NavigableLinkedHashMap -- order and sorting both are required
         //order is required to remove/add elements
         //Navigable is due to sorting requirement within the window
         
