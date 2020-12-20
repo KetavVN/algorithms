@@ -40,7 +40,7 @@ public class LastStoneWeight {
         
         Comparator<Integer> comparator = (x,y)->Integer.compare(y,x);
         
-        PriorityQueue<Integer> queue = new PriorityQueue(comparator);
+        PriorityQueue<Integer> queue = new PriorityQueue<>(comparator);
         
         for(int i : stones)
             queue.add(i);

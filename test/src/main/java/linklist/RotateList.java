@@ -1,7 +1,5 @@
 package linklist;
 
-import java.util.*;
-
 /*
 https://leetcode.com/problems/rotate-list/
 
@@ -28,52 +26,57 @@ rotate 4 steps to the right: 2->0->1->NULL
 Solution:
 100% faster than others
 
-*/
+ */
 public class RotateList {
 
-  public ListNode rotateRight(ListNode head, int k) {
-        
-        if(head == null) {
-            return head;
-        }
-        
-        int len = 0;
-        ListNode front = head;
-        while(front != null) {
-            len++;
-            front = front.next;
-        }
-        
-        k = k % len;
-        //System.out.println("len="+len+" k="+k);
-        if(k == 0) {
-            return head;
-        }
-        
-        if(k < 0) {
-            k = len + k;
-        }
-        
-        front = head;
-        int i = 0;
-        while(i < k) {
-            front = front.next;
-            i++;
-        }
-        
-        ListNode back = head;
-        while(front.next != null) {
-            front = front.next;
-            back = back.next;
-        }
-        
-        ListNode temp = back.next;
-        back.next = null;
-        front.next = head;
-        head = temp;
-        
-        return head;
-        
-    }
-    
+	class ListNode {
+		int val;
+		ListNode next;
+	}
+
+	public ListNode rotateRight(ListNode head, int k) {
+
+		if(head == null) {
+			return head;
+		}
+
+		int len = 0;
+		ListNode front = head;
+		while(front != null) {
+			len++;
+			front = front.next;
+		}
+
+		k = k % len;
+		//System.out.println("len="+len+" k="+k);
+		if(k == 0) {
+			return head;
+		}
+
+		if(k < 0) {
+			k = len + k;
+		}
+
+		front = head;
+		int i = 0;
+		while(i < k) {
+			front = front.next;
+			i++;
+		}
+
+		ListNode back = head;
+		while(front.next != null) {
+			front = front.next;
+			back = back.next;
+		}
+
+		ListNode temp = back.next;
+		back.next = null;
+		front.next = head;
+		head = temp;
+
+		return head;
+
+	}
+
 }
