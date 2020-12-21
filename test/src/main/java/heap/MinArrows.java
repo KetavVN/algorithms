@@ -1,5 +1,8 @@
 package heap;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /*
 https://leetcode.com/problems/minimum-number-of-arrows-to-burst-balloons/
 
@@ -60,7 +63,7 @@ public class MinArrows {
         }
     }
 
-    private Comparator<Baloon> ascComp = new Comparator<>() {
+    private Comparator<Baloon> ascComp = new Comparator<Baloon>() {
         @Override
         public int compare(Baloon b1, Baloon b2) {
             if(b1 == b2) return 0;
@@ -70,7 +73,8 @@ public class MinArrows {
         }
     };
 
-    private Comparator<Baloon> descComp = new Comparator<>() {
+    @SuppressWarnings("unused")
+	private Comparator<Baloon> descComp = new Comparator<Baloon>() {
         @Override
         public int compare(Baloon b1, Baloon b2) {
             if(b1 == b2) return 0;
