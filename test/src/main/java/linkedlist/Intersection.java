@@ -72,7 +72,7 @@ public class Intersection {
 		System.out.println(getIntersectionNode(l1, l2));
 		
 		
-		//sorted test
+		//sorted test 1
 		l1 = new ListNode<>(1);
 		l1.next = new ListNode<>(3);
 		l1.next.next = new ListNode<>(3);
@@ -88,6 +88,16 @@ public class Intersection {
 		l1.print(l1);
 		l2.print(l2);
 		System.out.println(getIntersectionNode2(l1, l2));
+		
+		//sorted test 2
+		l2 = new ListNode<>(1);
+		l2.next = new ListNode<>(2);
+		l2.next.next = new ListNode<>(3);
+		l2.next.next.next = new ListNode<>(3);
+		l1.print(l1);
+		l2.print(l2);
+		System.out.println(getIntersectionNode2(l1, l2));
+		
 	}
 
 }
