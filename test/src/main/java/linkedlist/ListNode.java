@@ -161,15 +161,10 @@ public class ListNode<T extends Comparable<T>> {
 	public String toString() {
 		return "ListNode [val=" + val + "]";
 	}
-
+	
 	public static void main(String ...args) {
 
-		ListNode<Integer> head = new ListNode<>(1);
-		head.next = new ListNode<Integer>(3);
-		head.next.next = new ListNode<Integer>(5);
-		head.next.next.next = new ListNode<Integer>(2);
-		head.next.next.next.next = new ListNode<Integer>(4);
-		head.next.next.next.next.next = new ListNode<Integer>(6);
+		ListNode<Integer> head = ListNode.getSampleList();
 
 		//head.organize(head);
 		head.print(head);
