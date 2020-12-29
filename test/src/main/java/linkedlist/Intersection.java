@@ -62,6 +62,7 @@ public class Intersection {
 	}
 	
 	public static void main(String[] args) {
+		//unsorted test
 		ListNode<Integer> l1 = ListNode.getSampleList();
 		ListNode<Integer> l2 = new ListNode<>(-1);
 		l2.next = new ListNode<>(-2);
@@ -69,6 +70,24 @@ public class Intersection {
 		l1.print(l1);
 		l2.print(l2);
 		System.out.println(getIntersectionNode(l1, l2));
+		
+		
+		//sorted test
+		l1 = new ListNode<>(1);
+		l1.next = new ListNode<>(3);
+		l1.next.next = new ListNode<>(3);
+		l1.next.next.next = new ListNode<>(4);
+		l1.next.next.next.next = new ListNode<>(5);
+		
+		l2 = new ListNode<>(1);
+		l2.next = new ListNode<>(2);
+		l2.next.next = new ListNode<>(3);
+		l2.next.next.next = new ListNode<>(3);
+		l2.next.next.next.next = l1.next.next.next;
+		
+		l1.print(l1);
+		l2.print(l2);
+		System.out.println(getIntersectionNode2(l1, l2));
 	}
 
 }
