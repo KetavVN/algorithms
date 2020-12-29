@@ -13,13 +13,13 @@ public class RemoveDuplicates {
 	/**
 	 * option 1: use hashMap - buffer
 	 */
-	public void removeDuplicates1(ListNode head) {
+	public void removeDuplicates1(ListNode<Integer> head) {
 		if(head == null) {
 			return;
 		}
-		Map<Integer, ListNode> nodeMap = new HashMap<>();
-		ListNode node = head;
-		ListNode prev = null;
+		Map<Integer, ListNode<Integer>> nodeMap = new HashMap<>();
+		ListNode<Integer> node = head;
+		ListNode<Integer> prev = null;
 		while(node!=null) {
 			if(!nodeMap.containsKey(node.val)) {
 				nodeMap.put(node.val, node);
@@ -34,13 +34,13 @@ public class RemoveDuplicates {
 	/**
 	 * option 2: O(n^2) solution
 	 */
-	public void removeDuplicates2(ListNode head) {
+	public void removeDuplicates2(ListNode<Integer> head) {
 		if(head == null) {
 			return;
 		}
-		ListNode node = head;
+		ListNode<Integer> node = head;
 		while(node != null) {
-			ListNode runner = node;
+			ListNode<Integer> runner = node;
 			while(runner!=null && runner.next!=null) {
 				if(runner.next.val == node.val) {
 					runner.next = runner.next.next;
@@ -53,17 +53,17 @@ public class RemoveDuplicates {
 	
 	public static void main(String [] args) {
 		RemoveDuplicates obj = new RemoveDuplicates();
-		ListNode head = ListNode.getSampleList();
+		ListNode<Integer> head = ListNode.getSampleList();
 		System.out.print("Original: ");
-		ListNode.printList(head);
+		head.print(head);
 		obj.removeDuplicates1(head);
 		System.out.print("After duplicate removal: ");
-		ListNode.printList(head);
+		head.print(head);
 		
 		head = ListNode.getSampleList();
 		obj.removeDuplicates2(head);
 		System.out.print("After duplicate removal2: ");
-		ListNode.printList(head);
+		head.print(head);
 	}
 	
 }

@@ -1,4 +1,4 @@
-package linklist;
+package linkedlist;
 
 /*
 write a program to rearrange following link list
@@ -8,8 +8,8 @@ a1->b1->a2->b2->a3->b3->a4->b4
  */
 public class ListNode<T extends Comparable<T>> {
 
-	private T val;
-	private ListNode<T> next;
+	public T val;
+	public ListNode<T> next;
 
 	public ListNode(T val) {
 		this.val = val;
@@ -63,7 +63,7 @@ public class ListNode<T extends Comparable<T>> {
 
 		//store reference of value's node in a variable for later use
 		ListNode<T> valNode = current;
-		
+
 		//put input node at head
 		current.next = head;
 		head = current;
@@ -141,9 +141,20 @@ public class ListNode<T extends Comparable<T>> {
 
 	public void print(ListNode<T> head) {
 		while(head != null) {
-			System.out.print(head.val+" ");
+			System.out.print(String.format("%s%s", head.val, head.next != null ? " -> ":"."));
 			head = head.next;
 		}
+		System.out.println();
+	}
+
+	public static ListNode<Integer> getSampleList() {
+		ListNode<Integer> head = new ListNode<>(1);
+		head.next = new ListNode<Integer>(3);
+		head.next.next = new ListNode<Integer>(5);
+		head.next.next.next = new ListNode<Integer>(2);
+		head.next.next.next.next = new ListNode<Integer>(4);
+		head.next.next.next.next.next = new ListNode<Integer>(6);
+		return head;
 	}
 
 	@Override

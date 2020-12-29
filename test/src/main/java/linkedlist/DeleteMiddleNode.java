@@ -6,7 +6,7 @@ package linkedlist;
  */
 public class DeleteMiddleNode {
 
-	public static void delete(ListNode head, ListNode nodeToDelete) {
+	public static void delete(ListNode<Integer> head, ListNode<Integer> nodeToDelete) {
 		if(head == null || nodeToDelete == null) {
 			return;
 		}
@@ -21,26 +21,26 @@ public class DeleteMiddleNode {
 	
 	public static void main(String[] args) {
 		//test 1: node is present
-		ListNode head = ListNode.getSampleList();
-		ListNode nodeToDelete = KthNode.getKthNodeFromLast(head, 1);
+		ListNode<Integer> head = ListNode.getSampleList();
+		ListNode<Integer> nodeToDelete = KthNodeFromLast.getKthNodeFromLast(head, 1);
 		System.out.print("Original List : ");
-		ListNode.printList(head);
+		head.print(head);
 		System.out.println("nodeToDelete = " + nodeToDelete);
 		delete(head, nodeToDelete);
 		System.out.print("After delete List : ");
-		ListNode.printList(head);
+		head.print(head);
 
 		System.out.println();
 
 		//test 1: node is not present in list
 		head = ListNode.getSampleList();
-		nodeToDelete = new ListNode(0);
+		nodeToDelete = new ListNode<Integer>(0);
 		System.out.print("Original List : ");
-		ListNode.printList(head);
+		head.print(head);
 		System.out.println("nodeToDelete = " + nodeToDelete);
 		delete(head, nodeToDelete);
 		System.out.print("After delete List : ");
-		ListNode.printList(head);
+		head.print(head);
 	}
 
 }

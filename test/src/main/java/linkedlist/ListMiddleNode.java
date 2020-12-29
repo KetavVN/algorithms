@@ -1,4 +1,4 @@
-package linklist;
+package linkedlist;
 
 /*
 https://leetcode.com/problems/middle-of-the-linked-list/

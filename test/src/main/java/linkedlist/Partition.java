@@ -7,15 +7,15 @@ package linkedlist;
  */
 public class Partition {
 
-	public static ListNode partition(ListNode head, int val) {
+	public static ListNode<Integer> partition(ListNode<Integer> head, int val) {
 
 		if(head == null) { return head; }
 
 		//1. find valueNode
-		ListNode dummy = new ListNode(0);
+		ListNode<Integer> dummy = new ListNode<Integer>(0);
 		dummy.next = head;
-		ListNode prev = dummy;
-		ListNode node = head;
+		ListNode<Integer> prev = dummy;
+		ListNode<Integer> node = head;
 		while(node != null && node.val != val) {
 			prev = node;
 			node = node.next;
@@ -29,7 +29,7 @@ public class Partition {
 		node.next = head;
 		dummy.next = node;
 		prev = dummy;
-		ListNode valueNode = node;
+		ListNode<Integer> valueNode = node;
 		head = null;
 
 		//3. iterate over remaining list and move smaller or equal items on left of valueNode
@@ -38,7 +38,7 @@ public class Partition {
 				if(head == null) {
 					head = node.next;
 				}
-				ListNode temp = node.next;	//move this tmp node in between prev & refNode.
+				ListNode<Integer> temp = node.next;	//move this tmp node in between prev & refNode.
 				node.next = temp.next;		//before move make sure current node's next reference is fixed.
 				temp.next = valueNode;
 				prev.next = temp;
@@ -51,14 +51,14 @@ public class Partition {
 		//4. return head if there were any swaps else return valueNode which was head.
 		return head != null ? head : valueNode;
 	}
-	
+
 	public static void main(String[] args) {
-		ListNode head = ListNode.getSampleList();
+		ListNode<Integer> head = ListNode.getSampleList();
 		System.out.print("Before partition : ");
-		ListNode.printList(head);
+		head.print(head);
 		head = Partition.partition(head, 2);
 		System.out.print("After partition : ");
-		ListNode.printList(head);
+		head.print(head);
 	}
 
 }
