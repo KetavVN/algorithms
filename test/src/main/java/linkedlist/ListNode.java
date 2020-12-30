@@ -15,6 +15,9 @@ public class ListNode<T extends Comparable<T>> {
 		this.val = val;
 	}
 
+	public ListNode() {
+	}
+
 	public int getLength(ListNode<T> head) {
 		int len = 0;
 		ListNode<T> current = head;
