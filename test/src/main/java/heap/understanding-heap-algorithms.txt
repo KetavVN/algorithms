@@ -6,7 +6,7 @@
 
 		public int [] createHeap(InputStream<Integer> stream) {
 			List<Integer> heap = new ArrayList<>();
-			while (!stream.hasItem()) {
+			while (stream.hasItem()) {
 				heap.add(stream.nextItem());	//inserts at the end
 				shiftUp(heap);
 			}
