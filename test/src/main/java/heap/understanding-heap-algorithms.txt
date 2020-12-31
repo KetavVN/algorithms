@@ -1,0 +1,57 @@
+1> create heap (stream) [shift up]: 
+	1. insert the new element at the last location in the array
+	2. compare that (and its sibling) node with its parent node.
+		2.1> if child element is smaller than parent then swap parent and child node values and repeat the process until parent <= tree root
+		2.2> if child element is not smaller than parent then end the process - tree already has heap property at this point
+
+		public int [] createHeap(InputStream<Integer> stream) {
+			List<Integer> heap = new ArrayList<>();
+			while (!stream.hasItem()) {
+				heap.add(stream.nextItem());	//inserts at the end
+				shiftUp(heap);
+			}
+			return toArray(heap);
+		}
+
+		private void shiftUp(List<Integer> heap) {
+			int child = heap.size()-1;
+			int parent = child/2;
+			boolean shift = true;
+			while(parent >= 0 && child > parent && shift) {
+				shift = false;
+				if(heap.get(parent) > heap.get(child)) {
+					swap(heap, parent, child);
+					shift = true;
+				}
+				child = parent;
+				parent /= 2;
+			}
+		}
+
+2> remove the lowest item from heap (tree root) [shift down]:
+	1. remove tree root and put last element of the tree at the root level
+	2. reduce arrayEndIndex by 1 
+	3. recursively shift down/swap this node with its child node if child node has lower value than this node. end the process when shift down index becomes > arrayEndIndex 	
+		  
+		  //assume input array is heap
+		  public int getMin(int [] heap) {
+		  	int min = heap[0];
+		  	swap(heap, 0, heap.length-1);
+		  	shiftDown(heap, 0, heap.length-2);
+		  	return min;
+		  }
+
+		  private void shiftDown(int [] heap, int start, int end) {
+		  	int child = start*2+1; //0 based index
+		  	boolean shift = true;
+		  	while(child <= end && shift) {
+		  		child = child+1<=end && heap[child] > heap[child+1] ? child+1 : child;
+		  		shift = false;
+		  		if(heap[start] > heap[child]) {
+		  			swap(heap, start, child);
+		  			shift = true;
+		  		}
+		  		start = child;
+		  		child = child*2+1;
+		  	}
+		  }
