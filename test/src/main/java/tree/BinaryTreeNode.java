@@ -2,9 +2,8 @@ package tree;
 
 public class BinaryTreeNode<T> {
 
-	@SuppressWarnings("unused")
-	private T val;
-	private BinaryTreeNode<T> left, right;
+	public T val;
+	public BinaryTreeNode<T> left, right;
 	
 	public BinaryTreeNode(T val) {
 		this.val = val;
