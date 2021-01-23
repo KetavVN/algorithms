@@ -9,6 +9,15 @@ public class BinaryTreeNode<T> {
 		this.val = val;
 	}
 
+	@Override @SuppressWarnings("unchecked")
+	public boolean equals(Object o) {
+		if(o instanceof BinaryTreeNode) {
+			BinaryTreeNode<T> ot = (BinaryTreeNode<T>) o; 
+			return o!=null && val.equals(ot.val);
+		}
+		return false;
+	}
+	
 	public boolean isBalanced() {
 		int leftHeight = getHeight(left, 0);
 		int rightHeight = getHeight(right, 0);
