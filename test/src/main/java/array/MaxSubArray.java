@@ -24,37 +24,35 @@ Execution Details:
 execution time = 0ms
 memory usage = 39.3mb
 
-*/
+ */
 public class MaxSubArray {
 
-    public int maxSubArray(int[] nums) {
-        
-        if(nums == null || nums.length == 0) return 0;
-        
-        int maxSum = Integer.MIN_VALUE;
-        int currentSum = 0;
-        int start=0, end=0;
-        
-        for(; end<nums.length; end++) {
-            
-            currentSum += nums[end];
-            
-            maxSum = (currentSum > maxSum) ? currentSum : maxSum;
-            
-            while(start < end && (nums[start] < 0 || currentSum < 0) ) {
-                currentSum -= nums[start];
-                maxSum = (currentSum > maxSum) ? currentSum : maxSum;
-                start++;
-            }
-            
-        }
-        
-        while(start < end-1) {
-            currentSum -= nums[start];
-            maxSum = (currentSum > maxSum) ? currentSum : maxSum;
-            start++;
-        }
-        
-        return maxSum;
-    }
+	public int maxSubArray(int[] nums) {
+
+		if(nums == null || nums.length == 0) return 0;
+
+		int maxSum = Integer.MIN_VALUE;
+		int currentSum = 0;
+		int start=0, end=0;
+
+		for(; end<nums.length; end++) {
+			currentSum += nums[end];
+			maxSum = (currentSum > maxSum) ? currentSum : maxSum;
+
+			while(start < end && (nums[start] < 0 || currentSum < 0) ) {
+				currentSum -= nums[start];
+				maxSum = (currentSum > maxSum) ? currentSum : maxSum;
+				start++;
+			}
+		}
+
+		while(start < end-1) {
+			currentSum -= nums[start];
+			maxSum = (currentSum > maxSum) ? currentSum : maxSum;
+			start++;
+		}
+
+		return maxSum;
+	}
+
 }
