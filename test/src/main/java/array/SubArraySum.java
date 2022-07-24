@@ -21,11 +21,10 @@ package array;
  * @author Ketav
  */
 public class SubArraySum {
-	
+
 	public int minSubArrayLen(int s, int[] nums) {
 		if(nums == null || nums.length == 0)
 			return 0;
-		
 		int start=0;
 		int sum = 0;
 		int minWindow=Integer.MAX_VALUE;
@@ -52,7 +51,7 @@ public class SubArraySum {
 		}
 		return minWindow > nums.length ? 0 : minWindow;
 	}
-	
+
 	public static void main (String ... args) {
 		System.out.println(new SubArraySum().minSubArrayLen(7, new int [] {1,1,1,2,2,3,4}));
 		System.out.println(new SubArraySum().minSubArrayLen(4, new int [] {1,1,1,2,2,3,4}));
@@ -60,5 +59,5 @@ public class SubArraySum {
 		System.out.println(new SubArraySum().minSubArrayLen(19, new int [] {}));
 		System.out.println(new SubArraySum().minSubArrayLen(19, null));
 	}
-	
+
 }
