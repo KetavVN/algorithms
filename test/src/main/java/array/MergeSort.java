@@ -28,22 +28,18 @@ public class MergeSort {
 	private void merge(int [] arr, int [] temp, int startIndex, int midIndex, int endIndex) {
 		int i = startIndex, j = midIndex+1;
 		int k = startIndex;
-		while(i<=midIndex && j<=endIndex) {
-			if(arr[i] < arr[j]) {
-				temp[k++] = arr[i++];
-			} else {
-				temp[k++] = arr[j++];
-			}
-		}
-		while(i <= midIndex) {
+
+		while(i<=midIndex && j<=endIndex)
+			temp[k++] = arr[i] < arr[j] ? arr[i++] : arr[j++];
+
+		while(i <= midIndex)
 			temp[k++] = arr[i++];
-		}
-		while(j <= endIndex) {
+
+		while(j <= endIndex)
 			temp[k++] = arr[j++];
-		}
-		for(i = startIndex; i <= endIndex; i++) {
+
+		for(i = startIndex; i <= endIndex; i++)
 			arr[i] = temp[i];
-		}
 	}
 
 	public static void main(String ...args) {
