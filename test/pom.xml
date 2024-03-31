@@ -15,7 +15,7 @@
 	<properties>
 		<spring.version>5.0.4.RELEASE</spring.version>
 		<aspectj.version>1.8.13</aspectj.version>
-		<jdk.version>1.8</jdk.version>
+		<jdk.version>21</jdk.version>
 	</properties>
 
 	<dependencies>

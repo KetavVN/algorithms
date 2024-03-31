@@ -46,62 +46,57 @@ import java.util.List;
 public class ArrayWindowMedians {
 
 	public double[] medianSlidingWindow(int[] nums, int k) {
-		
 		//NavigableLinkedHashMap -- order and sorting both are required
-        //order is required to remove/add elements
-        //Navigable is due to sorting requirement within the window
-        
-        if(nums == null || nums.length == 0) {
-            return new double[0];
-        }
-        
-        List<Integer> sortedList = new ArrayList<>();
-        for(int i=0; i<k-1; i++) {
-            sortedList.add(nums[i]);
-        }
-        Collections.sort(sortedList);
-        
-        double [] ans = new double[nums.length-k+1];
-        
-        int i = k-1;
-        do {
-            addNum(sortedList, nums[i]);    //array has k elements now
-            //System.out.println(sortedList);
-            ans[i-k+1] = (k%2 == 1) ? sortedList.get(k/2) 
-                : ((double)sortedList.get(k/2-1) + (double)sortedList.get(k/2))/2d;
-            findAndRemove(sortedList, nums[i-k+1]);   //array has k-1 elements now
-            i++;
-        } while(i<nums.length);
-        
-        return ans;
-    }
-    
-    public void addNum(List<Integer> sortedList, int num) {
-        int ind = getInd(sortedList,0, sortedList.size()-1, num);
-        sortedList.add(ind, num);
-    }
-    
-    public int getInd(List<Integer> sortedList, int start, int end, int num) {
-        if(start<end) {
-            int mid = (start+end)/2;
-            if(sortedList.get(mid) == num) {
-                return mid;
-            } else if (sortedList.get(mid) < num) {
-                return getInd(sortedList, mid+1, end, num);
-            } else {
-                return getInd(sortedList, start, mid-1, num);
-            }
-        }
-        return sortedList.isEmpty() ? start : sortedList.get(start) < num ? start+1 : start;
-        
-    }
-    
-    
-    public void findAndRemove(List<Integer> sortedList, int num) {
-        int ind = getInd(sortedList, 0, sortedList.size()-1, num);
-        sortedList.remove(ind);
-    }
-	
+		//order is required to remove/add elements
+		//Navigable is due to sorting requirement within the window
+		if(nums == null || nums.length == 0) {
+			return new double[0];
+		}
+
+		List<Integer> sortedList = new ArrayList<>();
+		for(int i=0; i<k-1; i++) {
+			sortedList.add(nums[i]);
+		}
+		Collections.sort(sortedList);
+
+		double [] ans = new double[nums.length-k+1];
+
+		int i = k-1;
+		do {
+			addNum(sortedList, nums[i]);    //array has k elements now
+			//System.out.println(sortedList);
+			ans[i-k+1] = (k%2 == 1) ? sortedList.get(k/2) 
+					: ((double)sortedList.get(k/2-1) + (double)sortedList.get(k/2))/2d;
+			findAndRemove(sortedList, nums[i-k+1]);   //array has k-1 elements now
+			i++;
+		} while(i<nums.length);
+		return ans;
+	}
+
+	public void addNum(List<Integer> sortedList, int num) {
+		int ind = getInd(sortedList,0, sortedList.size()-1, num);
+		sortedList.add(ind, num);
+	}
+
+	public int getInd(List<Integer> sortedList, int start, int end, int num) {
+		if(start<end) {
+			int mid = (start+end)/2;
+			if(sortedList.get(mid) == num) {
+				return mid;
+			} else if (sortedList.get(mid) < num) {
+				return getInd(sortedList, mid+1, end, num);
+			} else {
+				return getInd(sortedList, start, mid-1, num);
+			}
+		}
+		return sortedList.isEmpty() ? start : sortedList.get(start) < num ? start+1 : start;   
+	}
+
+	public void findAndRemove(List<Integer> sortedList, int num) {
+		int ind = getInd(sortedList, 0, sortedList.size()-1, num);
+		sortedList.remove(ind);
+	}
+
 	public static void main(String[] args) {
 		ArrayWindowMedians obj = new ArrayWindowMedians();
 		//double [] ans = obj.medianSlidingWindow(new int [] {1,3,-1,-3,5,3,6,7}, 3);
